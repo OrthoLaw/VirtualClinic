@@ -4,7 +4,8 @@ import { PERSONAS } from "@/lib/personas";
 import type { PersonaId } from "@/lib/types";
 
 export const runtime = "nodejs";
-export const maxDuration = 300; // headless capture + analysis can run long
+// Hobby caps at 60s. Keep capture lean (FIGMA_MAX_FRAMES=2) to finish in time.
+export const maxDuration = 60;
 
 export async function POST(req: NextRequest) {
   try {
