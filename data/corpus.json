@@ -1,0 +1,102 @@
+{
+  "note": "Grounding corpus. Entries are PARAPHRASES of real-world complaint/praise patterns (per spec Section 5 copyright handling), tagged by role/size/theme. Seeded set below; run `npm run build-corpus` to expand via Claude web search.",
+  "version": "seed-1",
+  "entries": [
+    {
+      "role": "TC",
+      "practice_size": "Small Independent",
+      "theme": "treatment presentation",
+      "sentiment": "frustration",
+      "source": "reddit/dentaloffice (paraphrase)",
+      "pattern": "Coordinators describe losing momentum in a treatment presentation because getting from a completed exam to a concrete monthly payment number takes too many screens while the parent waits."
+    },
+    {
+      "role": "TC",
+      "practice_size": "Small Independent",
+      "theme": "insurance friction",
+      "sentiment": "frustration",
+      "source": "software complaint thread (paraphrase)",
+      "pattern": "Insurance estimate fields that don't autosave and wipe entered data on a misclick or navigation are a recurring complaint; redoing the breakdown in front of a family is embarrassing."
+    },
+    {
+      "role": "TC",
+      "practice_size": "Small Independent",
+      "theme": "communication",
+      "sentiment": "frustration",
+      "source": "AAO-style forum (paraphrase)",
+      "pattern": "A payment-plan or discount calculation that is even a few dollars off, discussed live with the patient, permanently erodes trust in the software."
+    },
+    {
+      "role": "TC",
+      "practice_size": "Large OSO",
+      "theme": "software switching cost",
+      "sentiment": "frustration",
+      "source": "Glassdoor TC reviews (paraphrase)",
+      "pattern": "TCs at multi-location groups complain corporate-locked templates can't be adjusted for an individual family's situation without submitting a request, slowing the conversation."
+    },
+    {
+      "role": "TC",
+      "practice_size": "Large OSO",
+      "theme": "multi-provider calendar",
+      "sentiment": "frustration",
+      "source": "ortho ops discussion (paraphrase)",
+      "pattern": "Dashboard metrics that don't reconcile with corporate reporting create month-end headaches and anxiety about being unfairly ranked on the regional leaderboard."
+    },
+    {
+      "role": "TC",
+      "practice_size": "Large OSO",
+      "theme": "software switching cost",
+      "sentiment": "frustration",
+      "source": "PM software review (paraphrase)",
+      "pattern": "Switching between locations or doctor schedules that requires extra logins or location-switch friction is a common slowdown on high-volume days."
+    },
+    {
+      "role": "Front Desk",
+      "practice_size": "Small Independent",
+      "theme": "scheduling conflict",
+      "sentiment": "frustration",
+      "source": "r/dentaloffice (paraphrase)",
+      "pattern": "Front desk staff report reschedules that silently double-book another patient without a clear warning, discovered only when both families show up."
+    },
+    {
+      "role": "Front Desk",
+      "practice_size": "Small Independent",
+      "theme": "scheduling conflict",
+      "sentiment": "frustration",
+      "source": "Indeed front-desk reviews (paraphrase)",
+      "pattern": "Schedule grids with color/icon coding that isn't self-explanatory force staff to hover or click to learn meaning, costing seconds during phone calls."
+    },
+    {
+      "role": "Front Desk",
+      "practice_size": "Small Independent",
+      "theme": "training burden",
+      "sentiment": "frustration",
+      "source": "Glassdoor (paraphrase)",
+      "pattern": "High turnover means tools must be learnable in days; generic dental PM systems lacking ortho-specific appointment types (banding, debond, retainer check) force manual workarounds."
+    },
+    {
+      "role": "Front Desk",
+      "practice_size": "Large OSO",
+      "theme": "scheduling conflict",
+      "sentiment": "frustration",
+      "source": "ortho group ops thread (paraphrase)",
+      "pattern": "Centrally-booked (call-center) appointments arrive with missing or wrong insurance/appointment-type info that local front desk must fix before the patient arrives."
+    },
+    {
+      "role": "Front Desk",
+      "practice_size": "Large OSO",
+      "theme": "multi-provider calendar",
+      "sentiment": "frustration",
+      "source": "PM software review (paraphrase)",
+      "pattern": "Multi-location schedule views that show cross-location data by default are cluttered and slow when staff only need their own location's day."
+    },
+    {
+      "role": "Front Desk",
+      "practice_size": "Large OSO",
+      "theme": "communication",
+      "sentiment": "frustration",
+      "source": "ortho ops discussion (paraphrase)",
+      "pattern": "Lack of an audit trail showing who booked or changed an appointment makes 'who did this' disputes between the call center and locations hard to resolve."
+    }
+  ]
+}

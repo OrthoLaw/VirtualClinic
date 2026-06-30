@@ -1,0 +1,83 @@
+{
+  "note": "Nielsen's 10 Usability Heuristics (Nielsen Norman Group). Heuristic NAMES and the concept are public; article text is NOT reproduced. Cite by URL. Source: https://www.nngroup.com/articles/ten-usability-heuristics/",
+  "heuristics": [
+    {
+      "id": "nng-1",
+      "name": "Visibility of system status",
+      "summary": "Keep users informed about what is going on through timely, appropriate feedback (saved/unsaved, loading, confirmed vs tentative).",
+      "source": "https://www.nngroup.com/articles/visibility-system-status/"
+    },
+    {
+      "id": "nng-2",
+      "name": "Match between system and the real world",
+      "summary": "Speak the users' language; follow real-world conventions and information ordering. For ortho: use 'doctor', 'banding', 'debond', not generic dental/provider jargon.",
+      "source": "https://www.nngroup.com/articles/match-system-real-world/"
+    },
+    {
+      "id": "nng-3",
+      "name": "User control and freedom",
+      "summary": "Provide clearly marked exits, undo, and redo; let users back out of actions without penalty (e.g. recover a half-finished reschedule).",
+      "source": "https://www.nngroup.com/articles/user-control-and-freedom/"
+    },
+    {
+      "id": "nng-4",
+      "name": "Consistency and standards",
+      "summary": "Follow platform and internal conventions; the same thing should behave the same way across locations/screens.",
+      "source": "https://www.nngroup.com/articles/consistency-and-standards/"
+    },
+    {
+      "id": "nng-5",
+      "name": "Error prevention",
+      "summary": "Prevent problems before they occur — confirm destructive/double-booking actions, eliminate error-prone conditions (silent double-book, unsaved financial data).",
+      "source": "https://www.nngroup.com/articles/slips/"
+    },
+    {
+      "id": "nng-6",
+      "name": "Recognition rather than recall",
+      "summary": "Minimize memory load; make options, icons, and color codes self-explanatory without hover or recall.",
+      "source": "https://www.nngroup.com/articles/recognition-and-recall/"
+    },
+    {
+      "id": "nng-7",
+      "name": "Flexibility and efficiency of use",
+      "summary": "Accelerators (shortcuts, templates) for frequent tasks; let experts move fast while novices stay supported.",
+      "source": "https://www.nngroup.com/articles/flexibility-efficiency-heuristic/"
+    },
+    {
+      "id": "nng-8",
+      "name": "Aesthetic and minimalist design",
+      "summary": "Don't clutter the interface with irrelevant info; every extra unit competes with the relevant. Default views should show only what this role/location needs.",
+      "source": "https://www.nngroup.com/articles/aesthetic-minimalist-design/"
+    },
+    {
+      "id": "nng-9",
+      "name": "Help users recognize, diagnose, and recover from errors",
+      "summary": "Error messages in plain language, precise, constructive — no 'Error 400: Invalid Payload'.",
+      "source": "https://www.nngroup.com/articles/error-message-guidelines/"
+    },
+    {
+      "id": "nng-10",
+      "name": "Help and documentation",
+      "summary": "Provide easy-to-search, task-focused help where needed — but the product should be usable without it.",
+      "source": "https://www.nngroup.com/articles/help-and-documentation/"
+    },
+    {
+      "id": "nng-form",
+      "name": "Form design best practices",
+      "summary": "Autosave / preserve input, inline validation, clear required fields, don't lose data on misclick — critical for live financial/insurance entry.",
+      "source": "https://www.nngroup.com/articles/web-form-design/"
+    },
+    {
+      "id": "nng-tabular",
+      "name": "Data tables & scheduling grids",
+      "summary": "Scannable rows/columns, clear status encoding, distinguish tentative vs confirmed, avoid ambiguous color-only signals.",
+      "source": "https://www.nngroup.com/articles/data-tables/"
+    },
+    {
+      "id": "nng-response",
+      "name": "Response time limits",
+      "summary": "0.1s = instant, 1s = keeps flow, 10s = limit of attention. Slow page loads during high-volume exam days break the live-conversation pace.",
+      "source": "https://www.nngroup.com/articles/response-times-3-important-limits/"
+    }
+  ]
+}
