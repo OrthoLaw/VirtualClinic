@@ -79,7 +79,8 @@ export default function AnalyzeForm() {
     setPosting(true);
     try {
       // Post only findings the user hasn't dismissed. Keep figma_frames intact.
-      const keep = report.findings.filter((_, i) => !dismissed[i]);
+      const all = Array.isArray(report.findings) ? report.findings : [];
+      const keep = all.filter((_, i) => !dismissed[i]);
       const res = await fetch("/api/comment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -93,7 +94,7 @@ export default function AnalyzeForm() {
       // Mark every kept pinnable finding as done (batch returns counts, not per-finding).
       setPinStates(() => {
         const next: Record<number, PinStatus> = {};
-        report.findings.forEach((f, i) => {
+        all.forEach((f, i) => {
           if (f.figma_location && !dismissed[i]) next[i] = "done";
         });
         return next;
@@ -128,6 +129,10 @@ export default function AnalyzeForm() {
       setPostError(err.message);
     }
   }
+
+  // Never assume the API gave us a well-formed findings array.
+  const safeFindings = Array.isArray(report?.findings) ? report!.findings : [];
+  const activeCount = safeFindings.filter((_, i) => !dismissed[i]).length;
 
   return (
     <div className="space-y-6">
@@ -211,17 +216,12 @@ export default function AnalyzeForm() {
             {report.source_kind === "figma" && (
               <button
                 onClick={postToFigma}
-                disabled={
-                  posting ||
-                  report.findings.filter((_, i) => !dismissed[i]).length === 0
-                }
+                disabled={posting || activeCount === 0}
                 className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700 disabled:opacity-50"
               >
                 {posting
                   ? "Posting…"
-                  : `Post ${
-                      report.findings.filter((_, i) => !dismissed[i]).length
-                    } comments to Figma`}
+                  : `Post ${activeCount} comments to Figma`}
               </button>
             )}
             <button

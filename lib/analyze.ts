@@ -173,7 +173,7 @@ export async function analyze(
 
   const res = await client.messages.create({
     model: process.env.ANALYSIS_MODEL || "claude-sonnet-4-6",
-    max_tokens: 5000,
+    max_tokens: 8000,
     system: buildSystemPrompt(persona),
     tools: [REPORT_TOOL as any],
     tool_choice: { type: "tool", name: "submit_report" },
@@ -191,7 +191,8 @@ export async function analyze(
     source_url: url,
     summary: data.summary ?? "",
     case_acceptance_risk: data.case_acceptance_risk,
-    findings: data.findings ?? [],
+    // Defensive: the model (or a max_tokens truncation) could yield a non-array.
+    findings: Array.isArray(data.findings) ? data.findings : [],
     evidence_note: evidence.note,
     generated_at: new Date().toISOString(),
     figma_frames: evidence.frames,

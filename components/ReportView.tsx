@@ -197,10 +197,11 @@ export default function ReportView({
   onToggleDismiss?: (originalIndex: number) => void;
 }) {
   const canPin = report.source_kind === "figma" && !!onPin;
-  const findings = [...report.findings].sort(
+  const src = Array.isArray(report.findings) ? report.findings : [];
+  const findings = [...src].sort(
     (a, b) => SEV_META[a.severity].order - SEV_META[b.severity].order,
   );
-  const isDismissed = (f: Finding) => !!dismissed[report.findings.indexOf(f)];
+  const isDismissed = (f: Finding) => !!dismissed[src.indexOf(f)];
   // Counts reflect active (non-dismissed) findings only.
   const active = findings.filter((f) => !isDismissed(f));
   const counts = {
@@ -253,7 +254,7 @@ export default function ReportView({
 
       <div className="space-y-3">
         {findings.map((f, i) => {
-          const orig = report.findings.indexOf(f);
+          const orig = src.indexOf(f);
           return (
             <FindingCard
               key={i}
