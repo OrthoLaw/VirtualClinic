@@ -5,6 +5,21 @@ import { PERSONA_LIST } from "@/lib/personas";
 import type { FrictionReport, PersonaId } from "@/lib/types";
 import ReportView, { type PinStatus } from "./ReportView";
 
+// Read a response as JSON, but degrade gracefully when the server returns a
+// non-JSON error page (e.g. a Vercel timeout/crash: "An error occurred…").
+async function readJson(res: Response): Promise<any> {
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    const hint =
+      res.status === 504 || /timeout|timed out/i.test(text)
+        ? "The analysis took too long and the server timed out (Vercel Hobby caps at 60s). Try a link with fewer/simpler frames."
+        : `Server returned a non-JSON error (HTTP ${res.status}): ${text.slice(0, 160)}`;
+    throw new Error(hint);
+  }
+}
+
 const STEPS = [
   "Capturing the prototype…",
   "Loading persona + grounding corpus…",
@@ -46,7 +61,7 @@ export default function AnalyzeForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url, persona, focus }),
       });
-      const data = await res.json();
+      const data = await readJson(res);
       if (!res.ok) throw new Error(data.error || "Analysis failed.");
       setReport(data.report);
     } catch (err: any) {
@@ -70,7 +85,7 @@ export default function AnalyzeForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ report: { ...report, findings: keep } }),
       });
-      const data = await res.json();
+      const data = await readJson(res);
       if (!res.ok) throw new Error(data.error || "Posting failed.");
       const extra =
         data.skipped > 0 ? ` (${data.skipped} skipped — no location)` : "";
@@ -105,7 +120,7 @@ export default function AnalyzeForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ report, finding }),
       });
-      const data = await res.json();
+      const data = await readJson(res);
       if (!res.ok) throw new Error(data.error || "Pin failed.");
       setPinStates((s) => ({ ...s, [index]: "done" }));
     } catch (err: any) {

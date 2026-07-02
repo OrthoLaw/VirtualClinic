@@ -106,9 +106,10 @@ async function collectFlowFrames(
   const out: FlowFrame[] = [];
   let startW = 0; // width of the start screen — used to reject tiny component variants
   let guard = 0;
-  // Traverse generously (component-heavy prototypes wire buttons to hover-state
-  // variants), but only KEEP screen-sized frames so we don't capture buttons.
-  while (queue.length && out.length < MAX_FRAMES && guard < MAX_FRAMES * 12) {
+  // Hard cap on Figma round-trips: each is sequential and serverless has a 60s
+  // budget. Traverse enough to find real screens past hover-variant junk, but stop.
+  const MAX_FETCHES = 10;
+  while (queue.length && out.length < MAX_FRAMES && guard < MAX_FETCHES) {
     guard++;
     const id = queue.shift()!;
     if (visited.has(id)) continue;
