@@ -3,7 +3,7 @@ import { postComments, type CommentItem } from "@/lib/figma";
 import type { FrictionReport, Finding, Severity } from "@/lib/types";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 const SEV_TAG: Record<Severity, string> = {
   blocks_task: "🔴 BLOCKS TASK",

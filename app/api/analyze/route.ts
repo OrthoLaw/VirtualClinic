@@ -4,8 +4,8 @@ import { PERSONAS } from "@/lib/personas";
 import type { PersonaId } from "@/lib/types";
 
 export const runtime = "nodejs";
-// Hobby caps at 60s. Keep capture lean (FIGMA_MAX_FRAMES=2) to finish in time.
-export const maxDuration = 60;
+// Pro allows up to 300s; analysis (capture + vision call) runs ~40-90s.
+export const maxDuration = 300;
 
 export async function POST(req: NextRequest) {
   try {
